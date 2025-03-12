@@ -1,4 +1,5 @@
 import Header from './components/Header';
+import LastDrops from './components/LastDrops';
 import Search from './components/Search';
 import styled from 'styled-components';
 
@@ -18,6 +19,7 @@ function App() {
     <AppContainer>
       <Header />
       <Search />
+      <LastDrops />
     </AppContainer>
   );
 }
