@@ -9,9 +9,7 @@ const AppContainer = styled.div`
 }
 
 
-li {
-    list-style: none;
-}
+
 `
 
 function App() {
