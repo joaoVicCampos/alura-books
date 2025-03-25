@@ -1,6 +1,7 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
-const optList = ['CATEGORIAS', 'FAVORITOS', 'MINHAS ESTANTE']
+const optList = ['CATEGORIAS', 'FAVORITOS', 'ESTANTE']
 
 const Option = styled.li`
      min-width: 100px;
@@ -22,7 +23,9 @@ const Options = () => {
 
         <OptionsContainer className='options'>
             {optList.map((option) => (
-                <Option className='option'><p>{option}</p></Option>
+                <Option className='option'>
+                    <Link to={`/${option.toLowerCase()}`}><p>{option}</p></Link>
+                </Option>
             ))}
         </OptionsContainer>
 
