@@ -1,7 +1,8 @@
 import styled from "styled-components"
 import InputSearch from "../InputSearch"
-import { useState } from "react"
-import { books } from './BdLivros'
+import { useEffect, useState } from "react"
+import { getBooks } from "../../Services/books"
+
 
 const SearchContainer = styled.section`
     background-image: linear-gradient(90deg, #002F52 35%, #326589 165%);
@@ -43,7 +44,17 @@ const Resultado = styled.div`
 `
 
 const Search = () => {
-    const [book, setBook] = useState([])
+    const [bookSearched, setbookSearched] = useState([])
+    const [books, setBooks] = useState([])
+
+    const fetchBooks = async () => {
+        const booksAPI = await getBooks()
+        setBooks(booksAPI)
+    }
+
+    useEffect(() => {
+        fetchBooks()
+    }, [])
 
     return (
         <SearchContainer className="Search">
@@ -54,10 +65,10 @@ const Search = () => {
                 onBlur={(event) => {
                     const textInput = event.target.value
                     const searchRes = books.filter((livro) => livro.nome.includes(textInput))
-                    setBook(searchRes)
+                    setbookSearched(searchRes)
                 }}
             />
-            {book.map((livro) => (
+            {bookSearched.map((livro) => (
                 <Resultado>
                     <p>{livro.nome}</p>
                     <img src={livro.src} alt="" />

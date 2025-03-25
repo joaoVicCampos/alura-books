@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const livrosAPI = axios.create({ baseURL: "http//localhost:8030/livros" })
+const livrosAPI = axios.create({ baseURL: "http://localhost:8080/books" })
 
-const getBooks = () => {
-    const response = livrosAPI.get('/')
+const getBooks = async () => {
+    const response = await livrosAPI.get('/')
 
     return response.data
 }
