@@ -2,6 +2,7 @@ import styled from "styled-components"
 import InputSearch from "../InputSearch"
 import { useEffect, useState } from "react"
 import { getBooks } from "../../Services/books"
+import { postFavBook } from "../../Services/favorites"
 
 
 const SearchContainer = styled.section`
@@ -52,6 +53,14 @@ const Search = () => {
         setBooks(booksAPI)
     }
 
+    const insertFavBook = async (id) => {
+        const booksAPI = await getBooks()
+        const book = booksAPI.find((book) => book.id === id)
+        await postFavBook(id)
+        alert(`Livro ${book.nome} foi adicionado a favoritos`)
+    }
+
+
     useEffect(() => {
         fetchBooks()
     }, [])
@@ -69,7 +78,7 @@ const Search = () => {
                 }}
             />
             {bookSearched.map((livro) => (
-                <Resultado>
+                <Resultado onClick={() => insertFavBook(livro.id)}>
                     <p>{livro.nome}</p>
                     <img src={livro.src} alt="" />
                 </Resultado>

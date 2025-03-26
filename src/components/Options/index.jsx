@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-const optList = ['CATEGORIAS', 'FAVORITOS', 'ESTANTE']
+const optList = ['CATEGORIAS', 'FAVORITES', 'ESTANTE']
 
 const Option = styled.li`
      min-width: 100px;
